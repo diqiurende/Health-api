@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.health.api.db.dao.UserMapper">
+
+    <select id="searchUserPermissions" parameterType="int" resultType="java.lang.String">
+        SELECT DISTINCT p.permission_name
+        FROM tb_user u
+                 JOIN tb_role r ON JSON_CONTAINS(u.role, CAST(r.id AS CHAR))
+                 JOIN tb_permission p ON JSON_CONTAINS(r.permissions, CAST(p.id AS CHAR))
+        WHERE u.id = #{userId}
+          AND u.`status` = 1
+    </select>
+    <select id="login" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT id
+        FROM tb_user
+        WHERE username = #{username}
+        AND password = #{password}
+        LIMIT 1;
+    </select>
+    <select id="SearchUserNameById" parameterType="int" resultType="java.lang.String"></select>
+</mapper>
