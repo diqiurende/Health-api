@@ -3,6 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.health.api.db.dao.DeptMapper">
+    <select id="searchAllDept" resultType="HashMap">
+        select d.id,d.dept_name as deptName
+        from tb_dept as d
+        order by d.id
+    </select>
 
 
 </mapper>

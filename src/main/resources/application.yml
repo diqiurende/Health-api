@@ -118,7 +118,7 @@ sa-token:
     database: 1
     host: localhost
     port: 6379
-    password: abc123456
+#    password: abc123456
     timeout: 10s
     lettuce:
       pool:
