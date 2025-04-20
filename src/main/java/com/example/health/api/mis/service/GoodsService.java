@@ -27,4 +27,6 @@ public interface GoodsService {
     public boolean updateStatus(Map param);
 
     public int deleteByIds(Integer[] ids);
+
+
 }

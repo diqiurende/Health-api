@@ -199,6 +199,13 @@ public class GoodsController {
         return R.ok().put("result", bool);
     }
 
+    @PostMapping("/deleteByIds")
+    @SaCheckPermission(value = {"ROOT", "GOODS:DELETE"}, mode = SaMode.OR)
+    public R deleteByIds(@RequestBody @Valid DeleteGoodsByIdsForm form) {
+        int rows = goodsService.deleteByIds(form.getIds());
+        return R.ok().put("rows", rows);
+    }
+
 
 
 }
