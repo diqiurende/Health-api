@@ -34,6 +34,8 @@ public interface UserMapper {
 
     public int deleteUserByIds(Integer[] ids);
 
+    public int dismisss(int id);
+
 
 
 }

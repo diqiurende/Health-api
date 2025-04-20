@@ -197,4 +197,11 @@
         </foreach>
         AND root=FALSE
     </delete>
+
+    <update id="dismisss" parameterType="int">
+        update tb_user
+        SET status='2'
+        WHERE id=#{id}
+        AND root=FALSE
+    </update>
 </mapper>

@@ -1,5 +1,8 @@
 package com.example.health.api.db.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
 * @author faiz
 * @description 针对表【tb_rule(规则表)】的数据库操作Mapper
@@ -7,7 +10,7 @@ package com.example.health.api.db.dao;
 * @Entity generator.domain.RuleEntity
 */
 public interface RuleMapper {
-
+     public ArrayList<HashMap> searchAllRule();
 }
 
 

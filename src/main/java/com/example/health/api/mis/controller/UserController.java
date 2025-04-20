@@ -139,6 +139,15 @@ public class UserController {
         return R.ok().put("rows",rows);
     }
 
+    @PostMapping("/dismiss")
+    @SaCheckPermission(value = {"ROOT","USER:UPDATE"},mode =SaMode.OR)
+    public R dissmiss(@RequestBody @Valid DismissForm form){
+        int userId= form.getUserId();
+        int rows=userService.dismisss(userId);
+        return R.ok().put("rows",rows);
+    }
+
+
 
 
 

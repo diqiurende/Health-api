@@ -27,4 +27,6 @@ public interface UserService {
     public int update(Map param);
 
     public int deleteUserByIds(Integer[] ids);
+
+    public int dismisss(int id);
 }

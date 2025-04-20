@@ -4,5 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.health.api.db.dao.RuleMapper">
 
-
+    <select id="searchAllRule" resultType="HashMap">
+        SELECT id,name
+        FROM tb_rule
+    </select>
 </mapper>

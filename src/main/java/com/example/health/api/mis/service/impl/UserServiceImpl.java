@@ -117,4 +117,10 @@ public class UserServiceImpl implements UserService {
         int rows=userMapper.deleteUserByIds(ids);
         return rows;
     }
+
+    @Override
+    public int dismisss(int id) {
+        int rows=userMapper.dismisss(id);
+        return rows;
+    }
 }

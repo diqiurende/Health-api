@@ -1,0 +1,334 @@
+2025-04-19 02:45:19.163 [cluster-ClusterId{value='680274d701b6394b85be20f5', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster
+                -Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:696)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:574)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:410)
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:369)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.lookupServerDescription(DefaultServerMonitor.java:221)
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:157)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:283)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:309)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:350)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:803)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:981)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:110)
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:135)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:713)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveMessageWithAdditionalTimeout(InternalStreamConnection.java:571)
+	... 5 common frames omitted
+2025-04-19 09:51:30.256 [cluster-rtt-ClusterId{value='680274d701b6394b85be20f5', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection
+                -Opened connection [connectionId{localValue:4, serverValue:25}] to localhost:27017
+2025-04-19 09:51:32.617 [cluster-ClusterId{value='680274d701b6394b85be20f5', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection
+                -Opened connection [connectionId{localValue:5, serverValue:26}] to localhost:27017
+2025-04-19 09:51:32.617 [cluster-ClusterId{value='680274d701b6394b85be20f5', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster
+                -Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3271600}
+2025-04-19 11:36:09.401 [SpringApplicationShutdownHook] INFO  o.e.jetty.server.AbstractConnector
+                -Stopped SslValidatingServerConnector@646cd766{SSL, (ssl, http/1.1)}{0.0.0.0:7700}
+2025-04-19 11:36:09.415 [SpringApplicationShutdownHook] INFO  org.eclipse.jetty.server.session
+                -node0 Stopped scavenging
+2025-04-19 11:36:09.435 [SpringApplicationShutdownHook] INFO  o.e.j.s.h.ContextHandler.application
+                -Destroying Spring FrameworkServlet 'dispatcherServlet'
+2025-04-19 11:36:09.444 [SpringApplicationShutdownHook] INFO  o.e.j.server.handler.ContextHandler
+                -Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@7a36c83a{application,/health-api,[file:///C:/Users/faiz/AppData/Local/Temp/jetty-docbase.7700.10120978866867300370/],STOPPED}
+2025-04-19 11:36:09.577 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource
+                -{dataSource-1} closing ...
+2025-04-19 11:36:09.596 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource
+                -{dataSource-1} closed
+2025-04-19 11:36:18.765 [background-preinit] INFO  o.h.validator.internal.util.Version
+                -HV000001: Hibernate Validator 6.2.5.Final
+2025-04-19 11:36:18.766 [main] INFO  c.e.health.api.HealthApiApplication
+                -Starting HealthApiApplication using Java 15.0.2 on LAPTOP-MHEOH09H with PID 23652 (E:\ynuwork\毕设\work\HealthCheckSystem\Health-api\target\classes started by faiz in E:\ynuwork\毕设\work\HealthCheckSystem\Health-api)
+2025-04-19 11:36:18.767 [main] INFO  c.e.health.api.HealthApiApplication
+                -No active profile set, falling back to 1 default profile: "default"
+2025-04-19 11:36:19.327 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Multiple Spring Data modules found, entering strict repository configuration mode
+2025-04-19 11:36:19.328 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-04-19 11:36:19.345 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Finished Spring Data repository scanning in 13 ms. Found 0 MongoDB repository interfaces.
+2025-04-19 11:36:19.351 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Multiple Spring Data modules found, entering strict repository configuration mode
+2025-04-19 11:36:19.353 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-04-19 11:36:19.361 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-04-19 11:36:19.878 [main] INFO  org.eclipse.jetty.util.log
+                -Logging initialized @2229ms to org.eclipse.jetty.util.log.Slf4jLog
+2025-04-19 11:36:20.108 [main] INFO  o.s.b.w.e.j.JettyServletWebServerFactory
+                -Server initialized with port: 7700
+2025-04-19 11:36:20.133 [main] INFO  org.eclipse.jetty.server.Server
+                -jetty-9.4.51.v20230217; built: 2023-02-17T08:19:37.309Z; git: b45c405e4544384de066f814ed42ae3dceacdd49; jvm 15.0.2+7
+2025-04-19 11:36:20.149 [main] INFO  o.e.j.s.h.ContextHandler.application
+                -Initializing Spring embedded WebApplicationContext
+2025-04-19 11:36:20.149 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext
+                -Root WebApplicationContext: initialization completed in 1353 ms
+2025-04-19 11:36:20.221 [main] INFO  org.eclipse.jetty.server.session
+                -DefaultSessionIdManager workerName=node0
+2025-04-19 11:36:20.222 [main] INFO  org.eclipse.jetty.server.session
+                -No SessionScavenger set, using defaults
+2025-04-19 11:36:20.222 [main] INFO  org.eclipse.jetty.server.session
+                -node0 Scavenging every 660000ms
+2025-04-19 11:36:20.227 [main] INFO  o.e.j.server.handler.ContextHandler
+                -Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@1ea930eb{application,/health-api,[file:///C:/Users/faiz/AppData/Local/Temp/jetty-docbase.7700.13828111926114740739/],AVAILABLE}
+2025-04-19 11:36:20.227 [main] INFO  org.eclipse.jetty.server.Server
+                -Started @2579ms
+2025-04-19 11:36:20.679 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure
+                -Init DruidDataSource
+2025-04-19 11:36:29.231 [main] INFO  c.alibaba.druid.pool.DruidDataSource
+                -{dataSource-1} inited
+2025-04-19 11:36:30.475 [main] INFO  org.mongodb.driver.client
+                -MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.6.1"}, "os": {"type": "Windows", "name": "Windows 10", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Amazon.com Inc./15.0.2+7"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@70940cb8]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2025-04-19 11:36:30.498 [cluster-rtt-ClusterId{value='68031a3ec22d863a633a8c62', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection
+                -Opened connection [connectionId{localValue:1, serverValue:27}] to localhost:27017
+2025-04-19 11:36:30.498 [cluster-ClusterId{value='68031a3ec22d863a633a8c62', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection
+                -Opened connection [connectionId{localValue:2, serverValue:28}] to localhost:27017
+2025-04-19 11:36:30.498 [cluster-ClusterId{value='68031a3ec22d863a633a8c62', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster
+                -Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=34915799}
+2025-04-19 11:36:30.868 [main] INFO  o.e.j.s.h.ContextHandler.application
+                -Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-19 11:36:30.868 [main] INFO  o.s.web.servlet.DispatcherServlet
+                -Initializing Servlet 'dispatcherServlet'
+2025-04-19 11:36:30.869 [main] INFO  o.s.web.servlet.DispatcherServlet
+                -Completed initialization in 1 ms
+2025-04-19 11:36:30.955 [main] INFO  o.e.jetty.util.ssl.SslContextFactory
+                -x509=X509@21399e53(jetty,h=[demo],a=[],w=[]) for Server@2a6871ad[provider=null,keyStore=file:///E:/ynuwork/%E6%AF%95%E8%AE%BE/work/HealthCheckSystem/Health-api/target/classes/keystore.p12,trustStore=null]
+2025-04-19 11:36:31.008 [main] INFO  o.e.jetty.server.AbstractConnector
+                -Started SslValidatingServerConnector@501957bf{SSL, (ssl, http/1.1)}{0.0.0.0:7700}
+2025-04-19 11:36:31.009 [main] INFO  o.s.b.w.e.jetty.JettyWebServer
+                -Jetty started on port(s) 7700 (ssl, http/1.1) with context path '/health-api'
+2025-04-19 11:36:31.016 [main] INFO  c.e.health.api.HealthApiApplication
+                -Started HealthApiApplication in 12.541 seconds (JVM running for 13.367)
+2025-04-19 11:37:36.156 [SpringApplicationShutdownHook] INFO  o.e.jetty.server.AbstractConnector
+                -Stopped SslValidatingServerConnector@501957bf{SSL, (ssl, http/1.1)}{0.0.0.0:7700}
+2025-04-19 11:37:36.156 [SpringApplicationShutdownHook] INFO  org.eclipse.jetty.server.session
+                -node0 Stopped scavenging
+2025-04-19 11:37:36.156 [SpringApplicationShutdownHook] INFO  o.e.j.s.h.ContextHandler.application
+                -Destroying Spring FrameworkServlet 'dispatcherServlet'
+2025-04-19 11:37:36.157 [SpringApplicationShutdownHook] INFO  o.e.j.server.handler.ContextHandler
+                -Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@1ea930eb{application,/health-api,[file:///C:/Users/faiz/AppData/Local/Temp/jetty-docbase.7700.13828111926114740739/],STOPPED}
+2025-04-19 11:37:36.169 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource
+                -{dataSource-1} closing ...
+2025-04-19 11:37:36.172 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource
+                -{dataSource-1} closed
+2025-04-19 11:37:41.775 [main] INFO  c.e.health.api.HealthApiApplication
+                -Starting HealthApiApplication using Java 15.0.2 on LAPTOP-MHEOH09H with PID 2624 (E:\ynuwork\毕设\work\HealthCheckSystem\Health-api\target\classes started by faiz in E:\ynuwork\毕设\work\HealthCheckSystem\Health-api)
+2025-04-19 11:37:41.776 [main] INFO  c.e.health.api.HealthApiApplication
+                -No active profile set, falling back to 1 default profile: "default"
+2025-04-19 11:37:41.778 [background-preinit] INFO  o.h.validator.internal.util.Version
+                -HV000001: Hibernate Validator 6.2.5.Final
+2025-04-19 11:37:42.268 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Multiple Spring Data modules found, entering strict repository configuration mode
+2025-04-19 11:37:42.269 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-04-19 11:37:42.281 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Finished Spring Data repository scanning in 7 ms. Found 0 MongoDB repository interfaces.
+2025-04-19 11:37:42.288 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Multiple Spring Data modules found, entering strict repository configuration mode
+2025-04-19 11:37:42.289 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-04-19 11:37:42.295 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-04-19 11:37:42.684 [main] INFO  org.eclipse.jetty.util.log
+                -Logging initialized @1945ms to org.eclipse.jetty.util.log.Slf4jLog
+2025-04-19 11:37:42.865 [main] INFO  o.s.b.w.e.j.JettyServletWebServerFactory
+                -Server initialized with port: 7700
+2025-04-19 11:37:42.873 [main] INFO  org.eclipse.jetty.server.Server
+                -jetty-9.4.51.v20230217; built: 2023-02-17T08:19:37.309Z; git: b45c405e4544384de066f814ed42ae3dceacdd49; jvm 15.0.2+7
+2025-04-19 11:37:42.886 [main] INFO  o.e.j.s.h.ContextHandler.application
+                -Initializing Spring embedded WebApplicationContext
+2025-04-19 11:37:42.886 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext
+                -Root WebApplicationContext: initialization completed in 1074 ms
+2025-04-19 11:37:42.940 [main] INFO  org.eclipse.jetty.server.session
+                -DefaultSessionIdManager workerName=node0
+2025-04-19 11:37:42.940 [main] INFO  org.eclipse.jetty.server.session
+                -No SessionScavenger set, using defaults
+2025-04-19 11:37:42.941 [main] INFO  org.eclipse.jetty.server.session
+                -node0 Scavenging every 660000ms
+2025-04-19 11:37:42.944 [main] INFO  o.e.j.server.handler.ContextHandler
+                -Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@774d8276{application,/health-api,[file:///C:/Users/faiz/AppData/Local/Temp/jetty-docbase.7700.14329428363850422736/],AVAILABLE}
+2025-04-19 11:37:42.944 [main] INFO  org.eclipse.jetty.server.Server
+                -Started @2206ms
+2025-04-19 11:37:43.280 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure
+                -Init DruidDataSource
+2025-04-19 11:37:47.947 [main] INFO  c.alibaba.druid.pool.DruidDataSource
+                -{dataSource-1} inited
+2025-04-19 11:37:48.687 [main] INFO  org.mongodb.driver.client
+                -MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.6.1"}, "os": {"type": "Windows", "name": "Windows 10", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Amazon.com Inc./15.0.2+7"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@6d6d81c]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2025-04-19 11:37:48.693 [cluster-rtt-ClusterId{value='68031a8c064abc487d9456b9', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection
+                -Opened connection [connectionId{localValue:1, serverValue:30}] to localhost:27017
+2025-04-19 11:37:48.693 [cluster-ClusterId{value='68031a8c064abc487d9456b9', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection
+                -Opened connection [connectionId{localValue:2, serverValue:29}] to localhost:27017
+2025-04-19 11:37:48.693 [cluster-ClusterId{value='68031a8c064abc487d9456b9', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster
+                -Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=9970600}
+2025-04-19 11:37:48.954 [main] INFO  o.e.j.s.h.ContextHandler.application
+                -Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-19 11:37:48.954 [main] INFO  o.s.web.servlet.DispatcherServlet
+                -Initializing Servlet 'dispatcherServlet'
+2025-04-19 11:37:48.954 [main] INFO  o.s.web.servlet.DispatcherServlet
+                -Completed initialization in 0 ms
+2025-04-19 11:37:49.010 [main] INFO  o.e.jetty.util.ssl.SslContextFactory
+                -x509=X509@1f4b8027(jetty,h=[demo],a=[],w=[]) for Server@501b15b9[provider=null,keyStore=file:///E:/ynuwork/%E6%AF%95%E8%AE%BE/work/HealthCheckSystem/Health-api/target/classes/keystore.p12,trustStore=null]
+2025-04-19 11:37:49.044 [main] INFO  o.e.jetty.server.AbstractConnector
+                -Started SslValidatingServerConnector@39832280{SSL, (ssl, http/1.1)}{0.0.0.0:7700}
+2025-04-19 11:37:49.045 [main] INFO  o.s.b.w.e.jetty.JettyWebServer
+                -Jetty started on port(s) 7700 (ssl, http/1.1) with context path '/health-api'
+2025-04-19 11:37:49.050 [main] INFO  c.e.health.api.HealthApiApplication
+                -Started HealthApiApplication in 7.493 seconds (JVM running for 8.312)
+2025-04-19 11:40:40.600 [qtp1798443618-36] ERROR c.e.h.a.c.exception.ExceptionAdvice
+                -description不能为空
+org.springframework.validation.BindException: org.springframework.validation.BeanPropertyBindingResult: 7 errors
+Field error in object 'updateGoodsForm' on field 'description': rejected value [null]; codes [NotBlank.updateGoodsForm.description,NotBlank.description,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [updateGoodsForm.description,description]; arguments []; default message [description]]; default message [description不能为空]
+Field error in object 'updateGoodsForm' on field 'type': rejected value [null]; codes [NotBlank.updateGoodsForm.type,NotBlank.type,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [updateGoodsForm.type,type]; arguments []; default message [type]]; default message [type不能为空]
+Field error in object 'updateGoodsForm' on field 'initialPrice': rejected value [null]; codes [NotNull.updateGoodsForm.initialPrice,NotNull.initialPrice,NotNull.java.math.BigDecimal,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [updateGoodsForm.initialPrice,initialPrice]; arguments []; default message [initialPrice]]; default message [initialPrice不能为空]
+Field error in object 'updateGoodsForm' on field 'title': rejected value [null]; codes [NotBlank.updateGoodsForm.title,NotBlank.title,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [updateGoodsForm.title,title]; arguments []; default message [title]]; default message [title不能为空]
+Field error in object 'updateGoodsForm' on field 'code': rejected value [null]; codes [NotBlank.updateGoodsForm.code,NotBlank.code,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [updateGoodsForm.code,code]; arguments []; default message [code]]; default message [code不能为空]
+Field error in object 'updateGoodsForm' on field 'image': rejected value [null]; codes [NotBlank.updateGoodsForm.image,NotBlank.image,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [updateGoodsForm.image,image]; arguments []; default message [image]]; default message [image不能为空]
+Field error in object 'updateGoodsForm' on field 'currentPrice': rejected value [null]; codes [NotNull.updateGoodsForm.currentPrice,NotNull.currentPrice,NotNull.java.math.BigDecimal,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [updateGoodsForm.currentPrice,currentPrice]; arguments []; default message [currentPrice]]; default message [currentPrice不能为空]
+	at org.springframework.web.method.annotation.ModelAttributeMethodProcessor.resolveArgument(ModelAttributeMethodProcessor.java:175)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:517)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:584)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:799)
+	at org.eclipse.jetty.servlet.ServletHandler$ChainEnd.doFilter(ServletHandler.java:1656)
+	at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:292)
+	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:193)
+	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1626)
+	at com.example.health.api.config.xss.XssFilter.doFilter(XssFilter.java:20)
+	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:201)
+	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1626)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:193)
+	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1626)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:193)
+	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1626)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:193)
+	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1626)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:552)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:600)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1624)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1440)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:505)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1594)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1355)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.Server.handle(Server.java:516)
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:487)
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:732)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:479)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:277)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105)
+	at org.eclipse.jetty.io.ssl.SslConnection$DecryptedEndPoint.onFillable(SslConnection.java:555)
+	at org.eclipse.jetty.io.ssl.SslConnection.onFillable(SslConnection.java:410)
+	at org.eclipse.jetty.io.ssl.SslConnection$2.succeeded(SslConnection.java:164)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105)
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:338)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:315)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:173)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:137)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:883)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1034)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2025-04-19 11:41:30.775 [SpringApplicationShutdownHook] INFO  o.e.jetty.server.AbstractConnector
+                -Stopped SslValidatingServerConnector@39832280{SSL, (ssl, http/1.1)}{0.0.0.0:7700}
+2025-04-19 11:41:30.775 [SpringApplicationShutdownHook] INFO  org.eclipse.jetty.server.session
+                -node0 Stopped scavenging
+2025-04-19 11:41:30.776 [SpringApplicationShutdownHook] INFO  o.e.j.s.h.ContextHandler.application
+                -Destroying Spring FrameworkServlet 'dispatcherServlet'
+2025-04-19 11:41:30.776 [SpringApplicationShutdownHook] INFO  o.e.j.server.handler.ContextHandler
+                -Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@774d8276{application,/health-api,[file:///C:/Users/faiz/AppData/Local/Temp/jetty-docbase.7700.14329428363850422736/],STOPPED}
+2025-04-19 11:41:30.789 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource
+                -{dataSource-1} closing ...
+2025-04-19 11:41:30.794 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource
+                -{dataSource-1} closed
+2025-04-19 11:41:36.939 [background-preinit] INFO  o.h.validator.internal.util.Version
+                -HV000001: Hibernate Validator 6.2.5.Final
+2025-04-19 11:41:36.940 [main] INFO  c.e.health.api.HealthApiApplication
+                -Starting HealthApiApplication using Java 15.0.2 on LAPTOP-MHEOH09H with PID 36756 (E:\ynuwork\毕设\work\HealthCheckSystem\Health-api\target\classes started by faiz in E:\ynuwork\毕设\work\HealthCheckSystem\Health-api)
+2025-04-19 11:41:36.941 [main] INFO  c.e.health.api.HealthApiApplication
+                -No active profile set, falling back to 1 default profile: "default"
+2025-04-19 11:41:37.396 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Multiple Spring Data modules found, entering strict repository configuration mode
+2025-04-19 11:41:37.397 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-04-19 11:41:37.406 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Finished Spring Data repository scanning in 6 ms. Found 0 MongoDB repository interfaces.
+2025-04-19 11:41:37.414 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Multiple Spring Data modules found, entering strict repository configuration mode
+2025-04-19 11:41:37.415 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-04-19 11:41:37.425 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate
+                -Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2025-04-19 11:41:37.813 [main] INFO  org.eclipse.jetty.util.log
+                -Logging initialized @1791ms to org.eclipse.jetty.util.log.Slf4jLog
+2025-04-19 11:41:37.974 [main] INFO  o.s.b.w.e.j.JettyServletWebServerFactory
+                -Server initialized with port: 7700
+2025-04-19 11:41:37.989 [main] INFO  org.eclipse.jetty.server.Server
+                -jetty-9.4.51.v20230217; built: 2023-02-17T08:19:37.309Z; git: b45c405e4544384de066f814ed42ae3dceacdd49; jvm 15.0.2+7
+2025-04-19 11:41:38.002 [main] INFO  o.e.j.s.h.ContextHandler.application
+                -Initializing Spring embedded WebApplicationContext
+2025-04-19 11:41:38.002 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext
+                -Root WebApplicationContext: initialization completed in 1020 ms
+2025-04-19 11:41:38.063 [main] INFO  org.eclipse.jetty.server.session
+                -DefaultSessionIdManager workerName=node0
+2025-04-19 11:41:38.063 [main] INFO  org.eclipse.jetty.server.session
+                -No SessionScavenger set, using defaults
+2025-04-19 11:41:38.064 [main] INFO  org.eclipse.jetty.server.session
+                -node0 Scavenging every 600000ms
+2025-04-19 11:41:38.067 [main] INFO  o.e.j.server.handler.ContextHandler
+                -Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@1693ff90{application,/health-api,[file:///C:/Users/faiz/AppData/Local/Temp/jetty-docbase.7700.7657627564306760187/],AVAILABLE}
+2025-04-19 11:41:38.067 [main] INFO  org.eclipse.jetty.server.Server
+                -Started @2047ms
+2025-04-19 11:41:38.467 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure
+                -Init DruidDataSource
+2025-04-19 11:41:39.784 [main] INFO  c.alibaba.druid.pool.DruidDataSource
+                -{dataSource-1} inited
+2025-04-19 11:41:40.680 [main] INFO  org.mongodb.driver.client
+                -MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.6.1"}, "os": {"type": "Windows", "name": "Windows 10", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Amazon.com Inc./15.0.2+7"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=MongoCredential{mechanism=null, userName='admin', source='admin', password=<hidden>, mechanismProperties=<hidden>}, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@102f3f05]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2025-04-19 11:41:40.690 [cluster-rtt-ClusterId{value='68031b74fbb315020874bb40', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection
+                -Opened connection [connectionId{localValue:1, serverValue:32}] to localhost:27017
+2025-04-19 11:41:40.690 [cluster-ClusterId{value='68031b74fbb315020874bb40', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection
+                -Opened connection [connectionId{localValue:2, serverValue:31}] to localhost:27017
+2025-04-19 11:41:40.690 [cluster-ClusterId{value='68031b74fbb315020874bb40', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster
+                -Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=13267900}
+2025-04-19 11:41:40.972 [main] INFO  o.e.j.s.h.ContextHandler.application
+                -Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-19 11:41:40.973 [main] INFO  o.s.web.servlet.DispatcherServlet
+                -Initializing Servlet 'dispatcherServlet'
+2025-04-19 11:41:40.973 [main] INFO  o.s.web.servlet.DispatcherServlet
+                -Completed initialization in 0 ms
+2025-04-19 11:41:41.049 [main] INFO  o.e.jetty.util.ssl.SslContextFactory
+                -x509=X509@488c6c98(jetty,h=[demo],a=[],w=[]) for Server@2530baf6[provider=null,keyStore=file:///E:/ynuwork/%E6%AF%95%E8%AE%BE/work/HealthCheckSystem/Health-api/target/classes/keystore.p12,trustStore=null]
+2025-04-19 11:41:41.102 [main] INFO  o.e.jetty.server.AbstractConnector
+                -Started SslValidatingServerConnector@b379bc6{SSL, (ssl, http/1.1)}{0.0.0.0:7700}
+2025-04-19 11:41:41.103 [main] INFO  o.s.b.w.e.jetty.JettyWebServer
+                -Jetty started on port(s) 7700 (ssl, http/1.1) with context path '/health-api'
+2025-04-19 11:41:41.112 [main] INFO  c.e.health.api.HealthApiApplication
+                -Started HealthApiApplication in 4.39 seconds (JVM running for 5.091)
