@@ -11,11 +11,11 @@ server:
   port: 7700
   servlet:
     context-path: /health-api
-  ssl:
-    enabled: true
-    key-store-type: PKCS12
-    key-store: classpath:keystore.p12
-    key-store-password: abc123456
+#  ssl:
+#    enabled: true
+#    key-store-type: PKCS12
+#    key-store: classpath:keystore.p12
+#    key-store-password: abc123456
 
 spring:
   data:
@@ -32,7 +32,7 @@ spring:
     database: 0
     host: 127.0.0.1
     port: 6379
-    password: abc123456
+#    password: abc123456
     jedis:
       pool:
         #连接超时的最大时间
@@ -136,3 +136,17 @@ minio:
   access-key: root
   secret-key: abc123456
   bucket: health
+
+
+wechat:
+  app-id: wx1ef8608f6446f19c
+  app-secret: dbfb00655d2a01d3959d9d1a706b6fdc
+  pay:
+    v3:
+      health-vue:
+        app-id: wx1ef8608f6446f19c
+        app-v3-secret: xQ9kL4pR2wT7yU3iO8mN6bV5cZ1aH0dF
+        mch-id: 1715037426
+        domain: http://s2.gnip.vip:26600/health-api
+        cert-path: apiclient_cert.p12
+

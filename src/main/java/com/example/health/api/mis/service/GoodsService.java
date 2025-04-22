@@ -29,4 +29,6 @@ public interface GoodsService {
     public int deleteByIds(Integer[] ids);
 
 
+
+
 }

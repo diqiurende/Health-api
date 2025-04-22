@@ -3,12 +3,16 @@ package com.example.health.api.front.service.impl;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
+import com.example.health.api.common.PageUtils;
 import com.example.health.api.db.dao.GoodsMapper;
+import com.example.health.api.db.dao.OrderMapper;
 import com.example.health.api.front.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +22,10 @@ public class GoodsServiceImpl implements GoodsService {
     @Resource
     private GoodsMapper goodsMapper;
 
+
+
     @Override
+    @Cacheable(cacheNames = "goodsCache", key = "#id")
     public HashMap searchById(int id) {
         Map param = new HashMap() {{
             put("id", id);
@@ -35,4 +42,30 @@ public class GoodsServiceImpl implements GoodsService {
         }
         return null;
     }
+
+    @Override
+    public HashMap searchIndexGoodsByPart(Integer[] partIds) {
+        HashMap map = new HashMap();
+        for (int partId : partIds) {
+            ArrayList<HashMap> list = goodsMapper.searchByPartIdLimit4(partId);
+            map.put(partId, list);
+        }
+        return map;
+    }
+
+    @Override
+    public PageUtils searchListByPage(Map param) {
+        ArrayList<HashMap> list=new ArrayList<>();
+        long count=goodsMapper.searchListCount(param);
+        if(count>0){
+            list=goodsMapper.searchListByPage(param);
+        }
+        int page = MapUtil.getInt(param, "page");
+        int length = MapUtil.getInt(param, "length");
+        PageUtils pageUtils = new PageUtils(list, count, page, length);
+        return  pageUtils;
+
+    }
+
+
 }

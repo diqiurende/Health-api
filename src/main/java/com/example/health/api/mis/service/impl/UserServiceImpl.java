@@ -4,7 +4,7 @@ import cn.hutool.core.lang.hash.Hash;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.MD5;
-import com.ctc.wstx.util.StringUtil;
+
 import com.example.health.api.common.PageUtils;
 import com.example.health.api.db.dao.UserMapper;
 import com.example.health.api.db.pojo.UserEntity;

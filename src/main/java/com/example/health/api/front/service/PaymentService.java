@@ -1,0 +1,10 @@
+package com.example.health.api.front.service;
+
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+public interface PaymentService {
+    public ObjectNode unifiedOrder(String outTradeNo, int total,
+                                   String desc, String notifyUrl,
+                                   String timeExpire);
+    public String searchPaymentResult(String outTradeNo);
+}

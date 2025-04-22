@@ -6,7 +6,7 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.alipay.api.domain.HahaIspTestDO;
+//import com.alipay.api.domain.HahaIspTestDO;
 import com.example.health.api.common.MinioUtil;
 import com.example.health.api.common.PageUtils;
 import com.example.health.api.config.exception.HealthException;
@@ -18,6 +18,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -116,6 +117,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     @Transactional
+    @CacheEvict(cacheNames = "goodsCache", key = "#entity.id")
     public int update(GoodsEntity entity){
         //和insert一样 更新MD5值
         String md5 = this.genEntityMd5(entity);
@@ -129,6 +131,8 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    @Transactional
+    @CacheEvict(cacheNames = "goodsCache", key = "#id")
     public void updateCheckup(int id, MultipartFile file) {
 
         //list用于保存数据
@@ -196,6 +200,8 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     @Transactional
+    @CacheEvict(cacheNames = "goodsCache", key = "#param.get('id')",
+            condition = "#param.get('status')==false")
     public boolean updateStatus(Map param) {
         int rows=goodsMapper.updateStatus(param);
         if(rows!=1){
@@ -205,6 +211,8 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    @Transactional
+    @CacheEvict(cacheNames = "goodsCache", key = "#ids")
     public int deleteByIds(Integer[] ids) {
         //根据id查询到记录的封面
         ArrayList<String> list = goodsMapper.searchImageByIds(ids);
@@ -217,6 +225,9 @@ public class GoodsServiceImpl implements GoodsService {
         }
         return rows;
     }
+
+
+
 
 
 }

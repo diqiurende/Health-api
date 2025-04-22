@@ -1,7 +1,7 @@
 package com.example.health.api.config.exception;
 
 import cn.dev33.satoken.exception.NotLoginException;
-import cn.felord.payment.PayException;
+//import cn.felord.payment.PayException;
 import cn.hutool.json.JSONObject;
 import com.example.health.api.config.exception.HealthException;
 import lombok.extern.slf4j.Slf4j;
@@ -61,11 +61,11 @@ public class ExceptionAdvice {
             json.set("error", exception.getMsg());
         }
         //微信支付异常
-        else if (e instanceof PayException) {
-            PayException exception = (PayException) e;
-            log.error("微信支付异常", exception);
-            json.set("error", "微信支付异常");
-        }
+//        else if (e instanceof PayException) {
+//            PayException exception = (PayException) e;
+//            log.error("微信支付异常", exception);
+//            json.set("error", "微信支付异常");
+//        }
         //处理其余的异常
         else {
             log.error("执行异常", e);

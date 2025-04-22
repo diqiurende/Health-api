@@ -12,6 +12,7 @@ import com.example.health.api.common.PageUtils;
 import com.example.health.api.common.R;
 import com.example.health.api.config.exception.HealthException;
 import com.example.health.api.db.pojo.GoodsEntity;
+import com.example.health.api.front.controller.form.SearchIndexGoodsByPartForm;
 import com.example.health.api.mis.controller.form.*;
 import com.example.health.api.mis.service.GoodsService;
 import io.lettuce.core.dynamic.annotation.Param;
@@ -205,6 +206,8 @@ public class GoodsController {
         int rows = goodsService.deleteByIds(form.getIds());
         return R.ok().put("rows", rows);
     }
+
+
 
 
 
