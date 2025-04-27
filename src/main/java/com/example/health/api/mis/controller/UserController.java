@@ -148,6 +148,15 @@ public class UserController {
     }
 
 
+    @GetMapping("/searchDoctorById")
+    @SaCheckLogin
+    public R searchDoctorById() {
+        Integer userId = StpUtil.getLoginIdAsInt();
+        HashMap map = userService.searchDoctorById(userId);
+        return R.ok().put("result", map);
+    }
+
+
 
 
 

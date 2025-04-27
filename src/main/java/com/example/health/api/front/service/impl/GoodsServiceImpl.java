@@ -1,11 +1,14 @@
 package com.example.health.api.front.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
 import com.example.health.api.common.PageUtils;
 import com.example.health.api.db.dao.GoodsMapper;
+import com.example.health.api.db.dao.GoodsSnapshotDao;
 import com.example.health.api.db.dao.OrderMapper;
+import com.example.health.api.db.pojo.GoodsSnapshotEntity;
 import com.example.health.api.front.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
@@ -21,6 +24,10 @@ import java.util.Map;
 public class GoodsServiceImpl implements GoodsService {
     @Resource
     private GoodsMapper goodsMapper;
+
+
+    @Resource
+    private GoodsSnapshotDao goodsSnapshotDao;
 
 
 
@@ -65,6 +72,16 @@ public class GoodsServiceImpl implements GoodsService {
         PageUtils pageUtils = new PageUtils(list, count, page, length);
         return  pageUtils;
 
+    }
+
+
+    @Override
+    public HashMap searchSnapshotById(String snapshotId, Integer customerId) {
+
+
+        GoodsSnapshotEntity entity = goodsSnapshotDao.searchById(snapshotId);
+        HashMap map = BeanUtil.toBean(entity, HashMap.class);
+        return map;
     }
 
 

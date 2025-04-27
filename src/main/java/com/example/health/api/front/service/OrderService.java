@@ -12,4 +12,14 @@ public interface OrderService {
     public boolean updatePayment(Map param);
 
     public Integer searchCustomerId(String outTradeNo);
+    public boolean searchPaymentResult(String outTradeNo);
+
+    public PageUtils searchByPage(Map param);
+
+    public boolean refund(Map param);
+
+    public boolean updateRefundStatus(String outRefundNo);
+
+    public boolean hasOwnOrder(Map param);
+
 }

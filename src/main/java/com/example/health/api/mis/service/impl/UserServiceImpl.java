@@ -123,4 +123,11 @@ public class UserServiceImpl implements UserService {
         int rows=userMapper.dismisss(id);
         return rows;
     }
+
+
+    @Override
+    public HashMap searchDoctorById(int userId) {
+        HashMap map = userMapper.searchDoctorById(userId);
+        return map;
+    }
 }

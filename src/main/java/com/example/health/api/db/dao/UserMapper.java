@@ -36,6 +36,8 @@ public interface UserMapper {
 
     public int dismisss(int id);
 
+    public HashMap searchDoctorById(int userId);
+
 
 
 }

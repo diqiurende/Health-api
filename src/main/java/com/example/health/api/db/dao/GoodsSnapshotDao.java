@@ -2,11 +2,17 @@ package com.example.health.api.db.dao;
 
 import com.example.health.api.db.pojo.GoodsSnapshotEntity;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Repository  // 标记为持久层组件，供 Spring 管理
 public class GoodsSnapshotDao {
@@ -42,5 +48,32 @@ public class GoodsSnapshotDao {
         // save 方法会自动根据是否存在 _id 选择 insert 或 update
         String _id = mongoTemplate.save(entity).get_id();
         return _id;
+    }
+
+
+    public GoodsSnapshotEntity searchById(String id) {
+        GoodsSnapshotEntity entity = mongoTemplate.findById(id, GoodsSnapshotEntity.class);
+        return entity;
+    }
+
+
+    public List<Map> searchCheckup(String id, String sex) {
+        Aggregation aggregation = Aggregation.newAggregation(
+                Aggregation.project("checkup"), //规定结果集的列名
+                Aggregation.unwind("$checkup"), //展开JSON数组的内容，为了筛选其中元素
+                Aggregation.match(
+                        Criteria.where("_id").is(id) //定位快照记录
+                                //筛选适合当前体检人性别的检查项目
+                                .and("checkup.sex").in("无", sex)
+                )
+        );
+
+        AggregationResults<HashMap> results = mongoTemplate.aggregate(aggregation, "goods_snapshot", HashMap.class);
+        List<Map> list = new ArrayList<>();
+        results.getMappedResults().forEach(one -> {
+            HashMap map = (HashMap) one.get("checkup");
+            list.add(map);
+        });
+        return list;
     }
 }

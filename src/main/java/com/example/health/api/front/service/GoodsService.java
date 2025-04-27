@@ -14,5 +14,7 @@ public interface GoodsService {
 
     public PageUtils searchListByPage(Map param);
 
+    public HashMap searchSnapshotById(String snapshotId, Integer customerId);
+
 
 }

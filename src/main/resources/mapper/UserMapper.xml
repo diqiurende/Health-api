@@ -204,4 +204,12 @@
         WHERE id=#{id}
         AND root=FALSE
     </update>
+
+    <select id="searchDoctorById" parameterType="int" resultType="HashMap">
+        SELECT `name`,
+               sex,
+               tel
+        FROM tb_user
+        WHERE id = #{id}
+    </select>
 </mapper>

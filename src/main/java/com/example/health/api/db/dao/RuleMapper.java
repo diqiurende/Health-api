@@ -1,7 +1,10 @@
 package com.example.health.api.db.dao;
 
+import com.example.health.api.db.pojo.RuleEntity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
 * @author faiz
@@ -11,6 +14,15 @@ import java.util.HashMap;
 */
 public interface RuleMapper {
      public ArrayList<HashMap> searchAllRule();
+
+     public ArrayList<HashMap> searchByPage(Map param);
+     public long searchCount(Map param);
+
+     public int insert(RuleEntity entity);
+
+     public HashMap searchById(int id);
+     public int update(RuleEntity entity);
+     public int deleteById(int id);
 }
 
 

@@ -1,5 +1,8 @@
 package com.example.health.api.db.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
 * @author faiz
 * @description 针对表【tb_permission(权限表)】的数据库操作Mapper
@@ -7,6 +10,8 @@ package com.example.health.api.db.dao;
 * @Entity generator.domain.PermissionEntity
 */
 public interface PermissionMapper {
+
+    public ArrayList<HashMap> searchAllPermission();
 
 }
 

@@ -5,4 +5,9 @@
 <mapper namespace="com.example.health.api.db.dao.SystemMapper">
 
 
+    <select id="searchAll" resultType="com.example.health.api.db.pojo.SystemEntity">
+        SELECT id, item, `value`
+        FROM tb_system
+    </select>
+
 </mapper>

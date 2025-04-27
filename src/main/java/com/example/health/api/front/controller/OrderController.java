@@ -9,10 +9,7 @@ import cn.hutool.json.JSONObject;
 import com.example.health.api.common.PageUtils;
 import com.example.health.api.common.R;
 import com.example.health.api.config.sa_token.StpCustomerUtil;
-import com.example.health.api.front.controller.form.CreatePaymentForm;
-import com.example.health.api.front.controller.form.SearchGoodsByIdForm;
-import com.example.health.api.front.controller.form.SearchGoodsListByPageForm;
-import com.example.health.api.front.controller.form.SearchIndexGoodsByPartForm;
+import com.example.health.api.front.controller.form.*;
 import com.example.health.api.front.service.GoodsService;
 import com.example.health.api.front.service.OrderService;
 import com.example.health.api.socket.WebSocketService;
@@ -91,9 +88,8 @@ public class OrderController {
                     updateMap.put("outTradeNo", outTradeNo);
                     boolean success = orderService.updatePayment(updateMap);
 
-                    // 3.3 （可选）通知前端支付成功（例如 WebSocket 或推送）
+                    // 3.3 通知前端支付成功（ WebSocket 或推送）
                     if (success) {
-//                        // TODO: WebSocket通知：订单 outTradeNo 已支付
                              log.debug("订单付款成功，已更新订单状态");
     //查询订单的customerId
     Integer customerId = orderService.searchCustomerId(outTradeNo);
@@ -110,8 +106,77 @@ public class OrderController {
         log.error("订单付款成功，但是状态更新失败");
     }
 
-//                    // 返回结果由 SDK 处理并返回微信平台
                 });
+    }
+
+    @PostMapping("/searchPaymentResult")
+    @SaCheckLogin(type = StpCustomerUtil.TYPE)
+    public R searchPaymentResult(@Valid @RequestBody SearchPaymentResultForm form) {
+        boolean bool = orderService.searchPaymentResult(form.getOutTradeNo());
+        return R.ok().put("result", bool);
+    }
+
+
+    @PostMapping("/searchByPage")
+    @SaCheckLogin(type = StpCustomerUtil.TYPE)
+    public R searchByPage(@RequestBody @Valid SearchOrderByPageForm form) {
+        int customerId = StpCustomerUtil.getLoginIdAsInt();
+        int page = form.getPage();
+        int length = form.getLength();
+        int start = (page - 1) * length;
+        Map param = BeanUtil.beanToMap(form);
+        param.put("start", start);
+        param.put("customerId", customerId);
+        PageUtils pageUtils = orderService.searchByPage(param);
+        return R.ok().put("page", pageUtils);
+    }
+
+
+    @PostMapping("/refund")
+    @SaCheckLogin(type = StpCustomerUtil.TYPE)
+    public R refund(@RequestBody @Valid RefundForm form) {
+
+        //获取登陆的id
+        int customerId = StpCustomerUtil.getLoginIdAsInt();
+        //设置id
+        form.setCustomerId(customerId);
+        Map param = BeanUtil.beanToMap(form);
+        boolean bool = orderService.refund(param);
+        return R.ok().put("result", bool);
+    }
+
+    @SneakyThrows
+    @PostMapping("/refundCallback")
+    public Map refundCallback(
+            @RequestHeader("Wechatpay-Serial") String serial,
+            @RequestHeader("Wechatpay-Signature") String signature,
+            @RequestHeader("Wechatpay-Timestamp") String timestamp,
+            @RequestHeader("Wechatpay-Nonce") String nonce,
+            HttpServletRequest request) {
+        String body = request.getReader().lines().collect(Collectors.joining());
+        //验证数字签名，确保是微信服务器发送的通知消息
+        ResponseSignVerifyParams params = new ResponseSignVerifyParams();
+        params.setWechatpaySerial(serial);
+        params.setWechatpaySignature(signature);
+        params.setWechatpayTimestamp(timestamp);
+        params.setWechatpayNonce(nonce);
+        params.setBody(body);
+        return wechatApiProvider.callback("health-vue").refundCallback(params, data -> {
+            //判断退款是否成功
+            String status = data.getRefundStatus().toString();
+            if ("SUCCESS".equals(status)) {
+                String outRefundNo = data.getOutRefundNo();
+                //把订单更新成已退款状态
+                boolean bool = orderService.updateRefundStatus(outRefundNo);
+                if (!bool) {
+                    log.error("订单状态更新失败");
+                } else {
+                    log.debug("退款流水号为" + outRefundNo + "的订单退款成功");
+                }
+            } else if ("ABNORMAL".equals(status)) {
+                //用户银行卡作废或者冻结，发送短信给用户手机，让用户联系客服执行手动退款到其他银行卡
+            }
+        });
     }
 
 }

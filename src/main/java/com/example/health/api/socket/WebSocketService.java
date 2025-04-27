@@ -46,7 +46,7 @@ public class WebSocketService {
     }
 
     /**
-     * 客户端发送消息时触发（例如心跳或身份绑定）
+     * 客户端发送消息时触发
      */
     @OnMessage
     public void onMessage(String message, Session session) {

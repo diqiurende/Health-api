@@ -1,10 +1,12 @@
 package com.example.health.api.front.controller;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.hutool.core.bean.BeanUtil;
 import com.example.health.api.common.PageUtils;
 import com.example.health.api.common.R;
 import com.example.health.api.front.controller.form.SearchGoodsByIdForm;
 import com.example.health.api.front.controller.form.SearchGoodsListByPageForm;
+import com.example.health.api.front.controller.form.SearchGoodsSnapshotByIdForm;
 import com.example.health.api.front.controller.form.SearchIndexGoodsByPartForm;
 import com.example.health.api.front.service.GoodsService;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +46,14 @@ public class GoodsController {
         param.put("start", start);
         PageUtils pageUtils = goodsService.searchListByPage(param);
         return R.ok().put("page", pageUtils);
+    }
+
+
+    @PostMapping("/searchSnapshotForMis")
+    @SaCheckLogin
+    public R searchSnapshotForMis(@RequestBody @Valid SearchGoodsSnapshotByIdForm form){
+        HashMap map = goodsService.searchSnapshotById(form.getSnapshotId(), null);
+        return R.ok().put("result", map);
     }
 
 }

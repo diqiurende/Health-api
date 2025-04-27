@@ -9,5 +9,35 @@
         order by d.id
     </select>
 
+    <select id="searchByPage" parameterType="Map" resultType="HashMap">
+        SELECT d.id,
+        d.dept_name AS deptName,
+        d.tel,
+        d.email,
+        d.desc,
+        COUNT(u.id) AS emps
+        FROM tb_dept d
+        LEFT JOIN tb_user u ON u.dept_id = d.id AND u.status = 1
+        WHERE 1=1
+        <if test="deptName!=null">
+            AND d.dept_name LIKE '%${deptName}%'
+        </if>
+        GROUP BY d.id
+        LIMIT #{start}, #{length}
+    </select>
+
+    <select id="searchCount" parameterType="Map" resultType="long">
+        SELECT COUNT(*)
+        FROM (
+        SELECT d.id
+        FROM tb_dept d LEFT JOIN tb_user u ON u.dept_id=d.id AND u.status=1
+        WHERE 1=1
+        <if test="deptName!=null">
+            AND d.dept_name LIKE '%${deptName}%'
+        </if>
+        GROUP BY d.id
+        ) AS temp
+    </select>
+
 
 </mapper>

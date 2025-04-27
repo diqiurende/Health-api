@@ -29,4 +29,6 @@ public interface UserService {
     public int deleteUserByIds(Integer[] ids);
 
     public int dismisss(int id);
+
+    public HashMap searchDoctorById(int userId);
 }

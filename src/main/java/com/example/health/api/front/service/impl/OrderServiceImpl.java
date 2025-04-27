@@ -53,6 +53,8 @@ public class OrderServiceImpl implements OrderService {
 
     private String paymentNotifyUrl = "/front/order/paymentCallback";
 
+    private String refundNotifyUrl = "/front/order/refundCallback";
+
 
     @Override
     @Transactional
@@ -224,5 +226,88 @@ public class OrderServiceImpl implements OrderService {
     public Integer searchCustomerId(String outTradeNo) {
         Integer customerId = orderMapper.searchCustomerId(outTradeNo);
         return customerId;
+    }
+
+
+    @Override
+    @Transactional
+    public boolean searchPaymentResult(String outTradeNo) {
+        String transactionId = paymentService.searchPaymentResult(outTradeNo);
+        // 如果交易ID不为空，说明该订单已支付成功
+        if (transactionId != null) {
+            // 更新订单支付状态，把交易ID也更新进去
+            this.updatePayment(new HashMap() {{
+                put("outTradeNo", outTradeNo);       // 商户系统订单流水号
+                put("transactionId", transactionId); // 微信支付返回的交易支付号
+            }});
+
+            return true;  // 返回 true 表示处理成功
+        } else {
+            return false; // 如果没有查到交易ID，说明尚未支付或失败
+        }
+    }
+
+
+    @Override
+    public PageUtils searchByPage(Map param) {
+        ArrayList<HashMap> list = new ArrayList<>();
+        long count = orderMapper.searchFrontOrderCount(param);
+        if (count > 0) {
+            list = orderMapper.searchFrontOrderByPage(param);
+        }
+        int start = (Integer) param.get("start");
+        int length = (Integer) param.get("length");
+        PageUtils pageUtils = new PageUtils(list, count, start, length);
+        return pageUtils;
+    }
+
+
+    @Override
+    @Transactional
+    public boolean refund(Map param) {
+        //先查询订单是否存在退款流水号，避免用户重复申请退款
+        int id = MapUtil.getInt(param, "id");
+        String outRefundNo = orderMapper.searchAlreadyRefund(id);
+        //判断该订单是否申请退款了
+        if (outRefundNo != null) {
+            return false;
+        }
+
+        HashMap map = orderMapper.searchRefundNeeded(param);
+        String transactionId = MapUtil.getStr(map, "transactionId");
+        String amount = MapUtil.getStr(map, "amount");
+
+//        int total = NumberUtil.mul(amount, "100").intValue();  //总金额
+        int total=1;
+        //int refund = total;   //退款金额
+        int refund = 1;
+
+        if (transactionId == null) {
+            log.error("transactionId不能为空");
+            return false;
+        }
+        //执行退款
+        outRefundNo = paymentService.refund(transactionId, refund, total, refundNotifyUrl);
+        param.put("outRefundNo", outRefundNo);
+        if (outRefundNo != null) {
+            //更新退款流水号和退款日期时间
+            int rows = orderMapper.updateOutRefundNo(param);
+            if (rows == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    @Transactional
+    public boolean updateRefundStatus(String outRefundNo) {
+        int rows = orderMapper.updateRefundStatusByOutRefundNo(outRefundNo);
+        return rows == 1;
+    }
+    @Override
+    public boolean hasOwnOrder(Map param) {
+        Integer id = orderMapper.hasOwnOrder(param);
+        return id != null;
     }
 }

@@ -103,4 +103,20 @@ public class MinioUtil {
             throw new HealthException("文件删除失败");
         }
     }
+
+
+    public void uploadWord(String path, InputStream in) {
+        try {
+            String mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+            //在Minio中保存Word文档（文件不能超过50M）
+            this.client.putObject(PutObjectArgs.builder().bucket(bucket)
+                    .object(path).stream(in, -1, 50 * 1024 * 1024)
+                    .contentType(mime).build());
+            log.debug("向" + path + "保存了文件");
+            in.close();
+        } catch (Exception e) {
+            log.error("保存文件失败", e);
+            throw new HealthException("保存文件失败");
+        }
+    }
 }

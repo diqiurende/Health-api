@@ -7,4 +7,6 @@ public interface PaymentService {
                                    String desc, String notifyUrl,
                                    String timeExpire);
     public String searchPaymentResult(String outTradeNo);
+
+    public String refund(String transactionId, Integer refund, Integer total, String notifyUrl);
 }
